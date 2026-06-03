@@ -29,7 +29,7 @@ export default function PrivacyPage() {
             fontFamily: "var(--font-serif)", fontSize: 36, color: "white", marginBottom: 8,
           }}>Privacy Policy</h1>
           <p style={{ fontSize: 14, color: "rgba(255,255,255,0.45)" }}>
-            Last updated: April 14, 2026
+            Last updated: June 3, 2026
           </p>
         </div>
       </div>
@@ -48,7 +48,7 @@ export default function PrivacyPage() {
             <p><strong>Camera & Photos:</strong> The app requests camera permission for the photo journal feature, which allows you to photograph handwritten diary pages. The camera is activated only when you explicitly choose to take a photo. Images are processed to extract text via AI and are stored securely. Camera access can be revoked at any time through your device settings.</p>
             <p><strong>Mood & Emotion Data:</strong> Our AI analyzes your voice tone and words to detect emotions and mood patterns. This includes emotion scores, sentiment analysis, and mood classifications. This data is stored with your journal entries to provide mood tracking and insights.</p>
             <p><strong>Device & Technical Information:</strong> We collect basic device information including device type, operating system version, timezone, and app version for functionality and debugging purposes.</p>
-            <p><strong>Usage Data:</strong> We may collect information about how you use the app, including feature usage, session duration, and interaction patterns to improve the app experience.</p>
+            <p><strong>Diagnostics:</strong> We collect minimal crash and error reports (via Sentry) to keep the app stable and fix bugs. We do not use third-party product-analytics or behavioral-tracking SDKs, and we do not profile how you use the app.</p>
           </Section>
 
           <Section title="2. How We Use Your Information">
@@ -76,7 +76,7 @@ export default function PrivacyPage() {
               <li><strong>Biometric (USE_BIOMETRIC/USE_FINGERPRINT):</strong> Optional, for PIN lock and biometric app lock.</li>
               <li><strong>Storage (READ/WRITE_EXTERNAL_STORAGE):</strong> For saving and accessing audio recordings.</li>
               <li><strong>Alarm (SCHEDULE_EXACT_ALARM):</strong> For scheduling notification reminders.</li>
-              <li><strong>Advertising ID (AD_ID):</strong> May be used in future for serving advertisements. Currently not actively used.</li>
+              <li><strong>Advertising ID (AD_ID):</strong> Used by Google AdMob to serve non-personalized ads to free-tier users. We do not use it to track you across apps or build an advertising profile.</li>
             </ul>
             <p>All permissions are requested at the time of use, not at installation. You can revoke any permission at any time through your device settings.</p>
           </Section>
@@ -112,6 +112,11 @@ export default function PrivacyPage() {
               <li><strong>Cloudflare R2 (cloudflare.com):</strong> Secure audio and image file storage</li>
               <li><strong>Google Gemini AI (google.com):</strong> Voice transcription, emotion analysis, and mood detection</li>
               <li><strong>Railway (railway.app):</strong> Backend API hosting</li>
+              <li><strong>Firebase Cloud Messaging (google.com):</strong> Push notification delivery</li>
+              <li><strong>RevenueCat (revenuecat.com):</strong> Subscription management</li>
+              <li><strong>Resend (resend.com):</strong> Transactional support emails</li>
+              <li><strong>Sentry (sentry.io):</strong> Crash and error reporting</li>
+              <li><strong>Google AdMob (google.com):</strong> Non-personalized advertising for free-tier users only</li>
             </ul>
             <p>These providers process data on our behalf and are contractually obligated to protect your information. We may also disclose your data if required by law, court order, or governmental regulation.</p>
           </Section>
@@ -133,9 +138,10 @@ export default function PrivacyPage() {
               <li><strong>Right to Rectification:</strong> You can edit your journal entries at any time through the app</li>
               <li><strong>Right to Deletion:</strong> You can delete individual entries or your entire account</li>
               <li><strong>Right to Data Portability:</strong> You can request a copy of your data by contacting us</li>
-              <li><strong>Right to Withdraw Consent:</strong> You can revoke permissions and stop using the app at any time</li>
+              <li><strong>Right to Withdraw Consent:</strong> You can withdraw consent for sensitive-data processing at any time. Withdrawing does not affect the lawfulness of processing carried out before the withdrawal. To withdraw, stop using the app and delete your account.</li>
               <li><strong>Right to Object:</strong> You can object to certain processing by contacting us</li>
               <li><strong>Right to Restrict Processing:</strong> You can request we limit how we use your data</li>
+              <li><strong>Legal Basis:</strong> We process your special-category data (voice recordings, mood records, and journal contents) under GDPR Article 9(2)(a), on the basis of your explicit consent, which you give when you continue past the sign-in screen.</li>
             </ul>
             <p>To exercise any of these rights, contact us at mubarisfly@gmail.com. We will respond within 30 days.</p>
           </Section>
@@ -151,16 +157,16 @@ export default function PrivacyPage() {
           </Section>
 
           <Section title="10. Children&apos;s Privacy">
-            <p>AI Diary is intended for users aged 18 and above. We do not knowingly collect personal data from children under the age of 18 (or the applicable age of consent in your jurisdiction). If you are a parent or guardian and believe your child has provided us with personal data, please contact us at mubarisfly@gmail.com and we will promptly delete the data and associated account.</p>
+            <p>AI Diary is intended for users aged 13 and above. If you reside in the EEA or UK, you must be at least 16 (or the minimum digital-consent age set by your country) to consent to this processing. We do not knowingly collect personal data from children below these age limits. If you are a parent or guardian and believe your child has provided us with personal data, please contact us at mubarisfly@gmail.com and we will promptly delete the data and associated account.</p>
           </Section>
 
           <Section title="11. Advertising">
-            <p>The app currently does not display advertisements. However, we may introduce advertisements in the future. If ads are implemented:</p>
+            <p>The free tier of AI Diary displays ads through Google AdMob. Pro and trial users see no ads. We serve <strong>non-personalized ads only</strong>:</p>
             <ul style={{ paddingLeft: 20, listStyle: "disc" }}>
-              <li>We may use the Android Advertising ID for ad personalization</li>
-              <li>You can opt out of personalized ads through your device settings (Settings &gt; Google &gt; Ads)</li>
-              <li>Ad networks may collect device information for ad serving purposes</li>
-              <li>We will update this privacy policy before implementing any advertising features</li>
+              <li>We do not use your Advertising ID to track you across apps or build an advertising profile</li>
+              <li>Ads are contextual, not based on your behavior or personal data — your journal content is never used for advertising</li>
+              <li>AdMob may access the device Advertising ID for basic functions such as frequency capping and fraud prevention; you can reset or limit it via Settings &gt; Google &gt; Ads</li>
+              <li>Upgrading to Pro removes all ads</li>
             </ul>
           </Section>
 
