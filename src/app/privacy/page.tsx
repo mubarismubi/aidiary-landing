@@ -48,8 +48,9 @@ export default function PrivacyPage() {
             <p><strong>Camera, Photo Library & Uploaded Photos:</strong> You may choose a photo from your library or take one with the camera to attach to an entry, use as your profile photo, or submit through Photo Journal to read a handwritten diary page. Entry photos and profile photos are resized and compressed on your device, with EXIF/GPS metadata removed, before being stored in private Cloudflare R2 storage. Regular entry attachments and profile photos are not sent to Gemini. Only a photo you explicitly submit through Photo Journal is sent to Gemini for the requested handwriting and mood analysis. Camera and photo-library access can be revoked in your device settings.</p>
             <p><strong>Mood & Emotion Data:</strong> Our AI analyzes your voice tone and words to detect emotions and mood patterns. This includes emotion scores, sentiment analysis, and mood classifications. This data is stored with your journal entries to provide mood tracking and insights.</p>
             <p><strong>Physical Activity & Step Counts:</strong> If you enable the step-count habit, the app reads your daily step count through Android physical-activity sensors or Apple Motion &amp; Fitness. The daily value is stored with your private habit progress so it can sync across sessions and appear in your insights. AI Diary does not collect precise location from step tracking.</p>
-            <p><strong>Device & Technical Information:</strong> We collect basic device information including device type, operating system version, timezone, and app version for functionality and debugging. If you enable push notifications, we also store a Firebase registration token linked to your account so notifications can reach that app installation.</p>
-            <p><strong>Diagnostics:</strong> We collect minimal crash and error reports (via Sentry) to keep the app stable and fix bugs. We do not use third-party product-analytics or behavioral-tracking SDKs, and we do not profile how you use the app.</p>
+            <p><strong>Subscriptions & Purchase History:</strong> To provide and restore paid features, we store the subscription product, entitlement state, renewal or expiration status, and store transaction identifiers linked to your account through RevenueCat. We do not receive your full payment-card details.</p>
+            <p><strong>Device & Technical Information:</strong> We collect basic device information including device type, operating system version, timezone, and app version for functionality and debugging. To prepare push delivery, the app may create and store a Firebase registration token linked to a signed-in app installation before notification display permission is granted. Your operating-system permission controls whether alerts can be displayed, and the app attempts to remove its stored token when you sign out.</p>
+            <p><strong>Diagnostics & Support:</strong> We collect minimal crash and error reports (via Sentry) to keep the app stable and fix bugs. If you submit an authenticated support request, the ticket also includes app/build version, device model and configuration, locale, timezone, subscription state, streak, and entry/follow-up counts so we can diagnose the issue. It does not automatically attach your diary text, recordings, or photos. We do not use third-party product-analytics or behavioral-tracking SDKs, and we do not profile how you use the app.</p>
           </Section>
 
           <Section title="2. How We Use Your Information">
@@ -63,7 +64,8 @@ export default function PrivacyPage() {
               <li>To maintain your journaling streak and provide personalized features</li>
               <li>To show and sync step-count habit progress when you enable that feature</li>
               <li>To authenticate your account and keep your data secure</li>
-              <li>To send optional local notifications (journal reminders, streak alerts)</li>
+              <li>To manage subscription access and restore purchases</li>
+              <li>To prepare and deliver optional local and push notifications (journal reminders, streak alerts)</li>
               <li>To create consolidated day journals from your daily entries</li>
               <li>To provide search functionality across your journal entries</li>
               <li>To improve app performance and fix bugs</li>
@@ -82,7 +84,7 @@ export default function PrivacyPage() {
               <li><strong>Biometric (USE_BIOMETRIC/USE_FINGERPRINT):</strong> Optional, for PIN lock and biometric app lock.</li>
               <li><strong>Files:</strong> Optional. When you choose &ldquo;Save to device&rdquo; for an entry photo, the system file picker lets you choose the destination. AI Diary does not request broad storage access.</li>
               <li><strong>Alarm (SCHEDULE_EXACT_ALARM):</strong> For scheduling notification reminders.</li>
-              <li><strong>Advertising ID (Android only):</strong> Google AdMob may use it for non-personalized ad delivery, frequency capping, and fraud prevention for free-tier users. AI Diary does not use it to build an advertising profile. Ads are not initialized in the iOS app.</li>
+              <li><strong>Advertising ID (Android only):</strong> Google AdMob may use it for non-personalized ad delivery, frequency capping, and fraud prevention for free-tier users. AI Diary does not use it to build an advertising profile. The ads SDK is not included or initialized in the iOS app.</li>
             </ul>
             <p>User-facing runtime permissions are requested when the related feature needs them. Technical permissions such as internet access do not show a runtime prompt. You can revoke optional camera, photo-library, microphone, notification, or biometric access through your device settings.</p>
           </Section>
@@ -138,7 +140,7 @@ export default function PrivacyPage() {
               <li><strong>Habit and step progress:</strong> Account deletion also removes stored habit logs, including any step-count values</li>
               <li><strong>Request data deletion:</strong> Contact us at mubarisfly@gmail.com and we will delete all your data within 30 days</li>
             </ul>
-            <p>Deletion removes the data and your ability to access it from the live account immediately, and requests deletion of associated stored files at the same time. Backups may retain deleted data for up to 30 days before being purged.</p>
+            <p>Deletion removes the data and your ability to access it from the live account immediately. Associated audio and image object keys are placed in a server-only durable deletion queue in the same database transaction, and a scheduled worker retries failed storage removals until each object is gone. Completed deletion-job metadata is retained for up to seven days for operational verification. Backups may retain deleted data for up to 30 days before being purged.</p>
           </Section>
 
           <Section title="8. Your Rights (GDPR & Global Privacy Rights)">
@@ -164,7 +166,7 @@ export default function PrivacyPage() {
               <li>Inactivity reminders (after extended periods without journaling)</li>
               <li>Follow-up reflections and replies to support requests</li>
             </ul>
-            <p>You can turn notification categories off in AI Diary or disable notifications in your device settings. Notification delivery uses a Firebase registration token; journal content is not used for third-party advertising.</p>
+            <p>You can turn notification categories off in AI Diary or disable notifications in your device settings. AI Diary may register the signed-in app installation with Firebase before display permission is granted so push delivery is ready if you enable it; the operating-system permission controls whether alerts are shown. Journal content is not used for third-party advertising.</p>
           </Section>
 
           <Section title="10. Children&apos;s Privacy">
@@ -172,8 +174,10 @@ export default function PrivacyPage() {
           </Section>
 
           <Section title="11. Advertising">
-            <p>On Android, the free tier may display ads through Google AdMob. Pro and trial users see no ads, and ads are not initialized in the iOS app. Android ads are <strong>non-personalized</strong>:</p>
+            <p>On Android, the free tier may display ads through Google AdMob. Pro and trial users see no ads, and the ads SDK is not included or initialized in the iOS app. Android ads are <strong>non-personalized</strong>:</p>
             <ul style={{ paddingLeft: 20, listStyle: "disc" }}>
+              <li>Where required, Google User Messaging Platform presents advertising privacy choices before AI Diary requests an ad, and checks whether ads may be requested</li>
+              <li>When required by the applicable consent message, you can revisit or withdraw those choices from Settings &gt; Ad privacy choices</li>
               <li>We do not use your Advertising ID to track you across apps or build an advertising profile</li>
               <li>Ads are contextual, not based on your behavior or personal data — your journal content is never used for advertising</li>
               <li>AdMob may access the device Advertising ID for basic functions such as frequency capping and fraud prevention; you can reset or limit it via Settings &gt; Google &gt; Ads</li>
