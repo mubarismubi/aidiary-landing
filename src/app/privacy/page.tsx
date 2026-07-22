@@ -140,7 +140,7 @@ export default function PrivacyPage() {
               <li><strong>Habit and step progress:</strong> Account deletion also removes stored habit logs, including any step-count values</li>
               <li><strong>Request data deletion:</strong> Contact us at mubarisfly@gmail.com and we will delete all your data within 30 days</li>
             </ul>
-            <p>Deletion removes the data and your ability to access it from the live account immediately. Associated audio and image object keys are placed in a server-only durable deletion queue in the same database transaction, and a scheduled worker retries failed storage removals until each object is gone. Completed deletion-job metadata is retained for up to seven days for operational verification. Backups may retain deleted data for up to 30 days before being purged.</p>
+            <p>Deletion removes the data and your ability to access it from the live account immediately. Associated audio and image object keys are placed in a server-only durable deletion queue in the same database transaction, and a scheduled worker retries failed storage removals until each object is gone. While an account remains active, a minimal completed-job tombstone (account ID, object key, and timestamps) is retained to prevent a delayed request from reusing a deleted media key. After account deletion, this operational metadata is removed within seven days. Backups may retain deleted data for up to 30 days before being purged.</p>
           </Section>
 
           <Section title="8. Your Rights (GDPR & Global Privacy Rights)">
