@@ -33,6 +33,9 @@ export default function DeleteDataPage() {
           <p style={{ fontSize: 14, color: "rgba(255,255,255,0.45)" }}>
             App: AI Diary &mdash; Mood Journal &nbsp;&middot;&nbsp; Package: com.aidiary.moodjournal
           </p>
+          <p style={{ fontSize: 14, color: "rgba(255,255,255,0.45)", marginTop: 4 }}>
+            Effective and last updated: July 23, 2026
+          </p>
         </div>
       </div>
 
@@ -52,7 +55,7 @@ export default function DeleteDataPage() {
           </p>
 
           <Section title="Option 1 &mdash; Delete a single journal entry (in-app)">
-            <p>Entries are removed from your live account immediately and cannot be restored in the app. Deletion of their associated stored files is requested at the same time.</p>
+            <p>Entries are removed from your live account immediately and cannot be restored in the app. Their associated stored files enter a durable deletion queue at the same time, and storage deletion automatically retries if needed.</p>
             <ol style={{ paddingLeft: 20, listStyle: "decimal" }}>
               <li>Open <strong>AI Diary</strong> on your Android or iOS device.</li>
               <li>Go to the <strong>Journal</strong> tab (bottom nav).</li>
@@ -68,9 +71,14 @@ export default function DeleteDataPage() {
               <li>The AI-generated summary, tags, and mood/emotion analysis for that entry</li>
               <li>The entry&apos;s contribution to your streak and mood calendar</li>
             </ul>
+            <p>Items already saved as separate habits, reminders, memories, agent insights, or aggregate weekly/monthly recaps may remain after one source entry is deleted. You can request targeted deletion of those items by email or remove everything by deleting your account.</p>
           </Section>
 
-          <Section title="Option 2 &mdash; Request targeted data deletion by email">
+          <Section title="Option 2 &mdash; Delete one attached photo (in-app)">
+            <p>Open the journal entry, tap the photo to open the full-screen viewer, open its actions, and choose <strong>Delete photo</strong>. The photo and its thumbnail disappear from the live entry immediately and enter the same durable storage-deletion queue. The rest of the entry remains.</p>
+          </Section>
+
+          <Section title="Option 3 &mdash; Request targeted data deletion by email">
             <p>Use this if you want to delete something other than a single entry &mdash; for example, all voice recordings from a specific month, selected entry photos, your profile photo, or just the AI-generated summaries.</p>
             <div style={{ marginTop: 4, padding: 20, background: "white", borderRadius: 16, border: "1px solid #EAE5DC" }}>
               <p style={{ margin: 0 }}>
@@ -117,13 +125,13 @@ export default function DeleteDataPage() {
                 </Link>{" "}
                 page if you want those removed too.</li>
               <li><strong>Backups</strong> may retain deleted data for up to <strong>30 days</strong> before being overwritten.</li>
-              <li><strong>Aggregated, anonymized analytics</strong> (e.g. total entries created across all users) that cannot be linked back to you.</li>
-              <li><strong>Billing records</strong> related to paid subscriptions may be retained for up to 7 years for tax and accounting compliance. These contain no journal content.</li>
+              <li><strong>Completed media-deletion metadata</strong> (account ID, object key, and timestamps) remains while your account is active to prevent a delayed request from reusing a deleted media key. It contains no journal text or media. If you later delete the account, this metadata is removed within seven days.</li>
+              <li><strong>Subscription and transaction records</strong> may be retained by RevenueCat, Google Play, or Apple under their policies and applicable legal obligations. These contain no journal content.</li>
             </ul>
           </Section>
 
           <Section title="How long it takes">
-            <p>In-app entry deletion is immediate. Email requests are processed within <strong>30 days</strong>. You will receive a confirmation email once your request is complete.</p>
+            <p>In-app deletion removes live access immediately; queued media deletion normally follows shortly and automatically retries if storage is temporarily unavailable. Email requests are processed within the period required by applicable law, normally within <strong>30 days</strong> after ownership is verified.</p>
           </Section>
 
           <Section title="Questions">
@@ -137,7 +145,7 @@ export default function DeleteDataPage() {
                 </a>
               </p>
               <p style={{ margin: "4px 0 0", fontSize: 14, color: C.muted }}>
-                We aim to respond to all inquiries within 30 days.
+                We respond within the period required by applicable law and will notify you if a permitted extension is needed.
               </p>
             </div>
             <p style={{ marginTop: 16, fontSize: 14, color: C.muted }}>

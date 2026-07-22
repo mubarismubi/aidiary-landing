@@ -34,6 +34,9 @@ export default function DeleteAccountPage() {
           <p style={{ fontSize: 14, color: "rgba(255,255,255,0.45)" }}>
             App: AI Diary &mdash; Mood Journal &nbsp;&middot;&nbsp; Package: com.aidiary.moodjournal
           </p>
+          <p style={{ fontSize: 14, color: "rgba(255,255,255,0.45)", marginTop: 4 }}>
+            Effective and last updated: July 23, 2026
+          </p>
         </div>
       </div>
 
@@ -42,7 +45,7 @@ export default function DeleteAccountPage() {
         <div style={{ fontSize: 16, color: C.brown, lineHeight: 1.8 }}>
 
           <p style={{ marginBottom: 28 }}>
-            You can delete your AI Diary account and all associated data at any time. Below you&apos;ll find two ways to do it: the fastest (directly inside the app) and a fallback if you no longer have the app installed.
+            You can delete your AI Diary account and associated journal data at any time. Below you&apos;ll find two ways to do it: the fastest (directly inside the app) and a fallback if you no longer have the app installed. Limited backup, transaction, legal, and deletion-job records may remain for the periods explained below.
           </p>
 
           <Section title="Option 1 &mdash; Delete from inside the app (recommended)">
@@ -50,11 +53,11 @@ export default function DeleteAccountPage() {
             <ol style={{ paddingLeft: 20, listStyle: "decimal" }}>
               <li>Open <strong>AI Diary</strong> on your Android or iOS device.</li>
               <li>Sign in with the account you want to delete.</li>
-              <li>Go to the <strong>Settings</strong> tab (gear icon, bottom right).</li>
-              <li>Scroll to the bottom and tap <strong>Delete Account</strong>.</li>
+              <li>Open the <strong>Profile</strong> tab.</li>
+              <li>Tap <strong>More account settings</strong>, then <strong>Delete Account</strong>.</li>
               <li>Confirm in the dialog.</li>
             </ol>
-            <p>Your account, profile photo, journal entries, voice recordings, attached photos, and mood data are scheduled for permanent deletion as soon as you confirm.</p>
+            <p>Your account and live database access are removed immediately after confirmation. Associated profile, audio, and image files enter a durable server-side deletion queue, which retries storage deletion until each object is gone.</p>
           </Section>
 
           <Section title="Option 2 &mdash; Request deletion by email">
@@ -96,16 +99,16 @@ export default function DeleteAccountPage() {
           </Section>
 
           <Section title="What is retained (and why)">
-            <p>A small amount of data must be kept for legal, tax, or fraud-prevention reasons. Specifically:</p>
+            <p>A limited amount of data may remain for security, legal, tax, or operational reasons:</p>
             <ul style={{ paddingLeft: 20, listStyle: "disc" }}>
-              <li><strong>Billing records</strong> related to paid subscriptions may be retained for up to <strong>7 years</strong> to comply with tax and accounting laws. These records are held by our payments processor (RevenueCat / Google Play) and contain no journal content.</li>
-              <li><strong>Aggregated, anonymized analytics</strong> (for example, total daily active users) that cannot be linked back to you.</li>
+              <li><strong>Subscription and transaction records</strong> may be retained by RevenueCat, Google Play, or Apple for the periods required by their policies and applicable tax, accounting, fraud-prevention, or legal obligations. These records do not contain journal content.</li>
+              <li><strong>Deletion-job metadata</strong> (account ID, media object key, and timestamps) may remain for up to seven days after account deletion so we can verify that queued media deletion completed.</li>
               <li><strong>Backups</strong> may contain your data for up to 30 days after deletion before being overwritten on schedule.</li>
             </ul>
           </Section>
 
           <Section title="How long it takes">
-            <p>In-app deletions are processed immediately. Email requests are completed within <strong>30 days</strong> of receipt. You will receive an email confirmation once deletion is complete.</p>
+            <p>In-app deletion removes the live account immediately. Queued media deletion normally follows shortly and automatically retries if storage is temporarily unavailable. Email requests are processed within the period required by applicable law, normally within <strong>30 days</strong> after ownership is verified. Backup expiry and provider-held records follow the periods above.</p>
           </Section>
 
           <Section title="Questions">
@@ -119,7 +122,7 @@ export default function DeleteAccountPage() {
                 </a>
               </p>
               <p style={{ margin: "4px 0 0", fontSize: 14, color: C.muted }}>
-                We aim to respond to all inquiries within 30 days.
+                We respond within the period required by applicable law and will notify you if a permitted extension is needed.
               </p>
             </div>
             <p style={{ marginTop: 16, fontSize: 14, color: C.muted }}>
