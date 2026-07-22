@@ -52,9 +52,9 @@ export default function DeleteDataPage() {
           </p>
 
           <Section title="Option 1 &mdash; Delete a single journal entry (in-app)">
-            <p>Entries are deleted immediately and permanently.</p>
+            <p>Entries are removed from your live account immediately and cannot be restored in the app. Deletion of their associated stored files is requested at the same time.</p>
             <ol style={{ paddingLeft: 20, listStyle: "decimal" }}>
-              <li>Open <strong>AI Diary</strong> on your Android device.</li>
+              <li>Open <strong>AI Diary</strong> on your Android or iOS device.</li>
               <li>Go to the <strong>Journal</strong> tab (bottom nav).</li>
               <li>Find the entry you want to remove.</li>
               <li><strong>Long-press</strong> the entry &mdash; a delete option will appear.</li>
@@ -64,13 +64,14 @@ export default function DeleteDataPage() {
             <ul style={{ paddingLeft: 20, listStyle: "disc" }}>
               <li>The entry&apos;s transcript and text</li>
               <li>The associated voice recording (audio file on Cloudflare R2)</li>
+              <li>Every attached photo, including its full-size image and thumbnail in Cloudflare R2</li>
               <li>The AI-generated summary, tags, and mood/emotion analysis for that entry</li>
               <li>The entry&apos;s contribution to your streak and mood calendar</li>
             </ul>
           </Section>
 
           <Section title="Option 2 &mdash; Request targeted data deletion by email">
-            <p>Use this if you want to delete something other than a single entry &mdash; for example, all voice recordings from a specific month, or just the AI-generated summaries.</p>
+            <p>Use this if you want to delete something other than a single entry &mdash; for example, all voice recordings from a specific month, selected entry photos, your profile photo, or just the AI-generated summaries.</p>
             <div style={{ marginTop: 4, padding: 20, background: "white", borderRadius: 16, border: "1px solid #EAE5DC" }}>
               <p style={{ margin: 0 }}>
                 <strong>Email:</strong>{" "}
@@ -87,7 +88,7 @@ export default function DeleteDataPage() {
               </p>
               <ul style={{ margin: "6px 0 0", paddingLeft: 20, listStyle: "disc" }}>
                 <li>The email address registered with your account.</li>
-                <li>What data you want deleted (e.g. &ldquo;all entries before January 2026&rdquo;, &ldquo;all voice recordings&rdquo;, &ldquo;just the AI summaries&rdquo;).</li>
+                <li>What data you want deleted (e.g. &ldquo;all entries before January 2026&rdquo;, &ldquo;all voice recordings&rdquo;, &ldquo;my profile and entry photos&rdquo;, or &ldquo;just the AI summaries&rdquo;).</li>
               </ul>
             </div>
             <p style={{ marginTop: 12, fontSize: 14, color: C.muted }}>
@@ -97,11 +98,13 @@ export default function DeleteDataPage() {
 
           <Section title="What can be deleted">
             <ul style={{ paddingLeft: 20, listStyle: "disc" }}>
-              <li>Individual journal entries (text + audio + AI analysis)</li>
+              <li>Individual journal entries (text + audio + attached photos + AI analysis)</li>
               <li>Voice recordings (audio files)</li>
+              <li>Individual entry-photo attachments and their thumbnails</li>
+              <li>Your profile photo</li>
               <li>AI-generated summaries and tags</li>
               <li>Mood and emotion scores for specific entries</li>
-              <li>Photo-journal images</li>
+              <li>Handwritten-page Photo Journal images</li>
               <li>Tags and tag history</li>
             </ul>
           </Section>

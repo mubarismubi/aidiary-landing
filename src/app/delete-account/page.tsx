@@ -48,13 +48,13 @@ export default function DeleteAccountPage() {
           <Section title="Option 1 &mdash; Delete from inside the app (recommended)">
             <p>The quickest way. Deletion begins immediately.</p>
             <ol style={{ paddingLeft: 20, listStyle: "decimal" }}>
-              <li>Open <strong>AI Diary</strong> on your Android device.</li>
+              <li>Open <strong>AI Diary</strong> on your Android or iOS device.</li>
               <li>Sign in with the account you want to delete.</li>
               <li>Go to the <strong>Settings</strong> tab (gear icon, bottom right).</li>
               <li>Scroll to the bottom and tap <strong>Delete Account</strong>.</li>
               <li>Confirm in the dialog.</li>
             </ol>
-            <p>Your account, journal entries, voice recordings, and mood data are scheduled for permanent deletion as soon as you confirm.</p>
+            <p>Your account, profile photo, journal entries, voice recordings, attached photos, and mood data are scheduled for permanent deletion as soon as you confirm.</p>
           </Section>
 
           <Section title="Option 2 &mdash; Request deletion by email">
@@ -88,6 +88,7 @@ export default function DeleteAccountPage() {
               <li>Your account (authentication record, profile, email, name)</li>
               <li>All journal entries (text, transcripts, AI summaries, tags)</li>
               <li>All voice recordings and uploaded audio files</li>
+              <li>Your profile photo and all entry-photo attachments, including stored thumbnails</li>
               <li>All mood and emotion analysis data</li>
               <li>Streak history, reminder preferences, and personal settings</li>
               <li>Device tokens used for notifications</li>

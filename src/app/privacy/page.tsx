@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Privacy Policy - AI Diary",
-  description: "Privacy Policy for AI Diary - Voice Mood Journal",
+  description: "Privacy Policy for AI Diary - Voice and Photo Journal",
 };
 
 const C = {
@@ -29,7 +29,7 @@ export default function PrivacyPage() {
             fontFamily: "var(--font-serif)", fontSize: 36, color: "white", marginBottom: 8,
           }}>Privacy Policy</h1>
           <p style={{ fontSize: 14, color: "rgba(255,255,255,0.45)" }}>
-            Last updated: June 3, 2026
+            Last updated: July 22, 2026
           </p>
         </div>
       </div>
@@ -38,16 +38,17 @@ export default function PrivacyPage() {
       <div style={{ maxWidth: 720, margin: "0 auto", padding: "48px 24px 80px" }}>
         <div style={{ fontSize: 16, color: C.brown, lineHeight: 1.8 }}>
           <p style={{ marginBottom: 24 }}>
-            AI Diary (&ldquo;we&rdquo;, &ldquo;us&rdquo;, &ldquo;our&rdquo;, or &ldquo;the app&rdquo;) is committed to protecting your privacy. This Privacy Policy explains how we collect, use, store, and safeguard your information when you use our mobile application AI Diary - Voice Mood Journal (available on Google Play). By using the app, you agree to the collection and use of information in accordance with this policy.
+            AI Diary (&ldquo;we&rdquo;, &ldquo;us&rdquo;, &ldquo;our&rdquo;, or &ldquo;the app&rdquo;) is committed to protecting your privacy. This Privacy Policy explains how we collect, use, store, and safeguard your information when you use AI Diary on Android or iOS. By using the app, you agree to the collection and use of information in accordance with this policy.
           </p>
 
           <Section title="1. Information We Collect">
-            <p><strong>Account Information:</strong> When you create an account, we collect your email address and authentication credentials. We use Supabase Authentication to manage user accounts securely.</p>
-            <p><strong>Voice Recordings & Microphone Access:</strong> The app requires microphone permission to record voice journal entries. Audio recordings are processed for transcription and mood analysis. Audio files are stored securely in encrypted cloud storage (Cloudflare R2) and are only accessible by you through your authenticated account.</p>
+            <p><strong>Account Information:</strong> When you create an account, we collect your email address and account identifier. You may also choose to add a display name, age, and profile photo. We use Supabase Authentication to manage user accounts securely.</p>
+            <p><strong>Voice Recordings & Microphone Access:</strong> Microphone access is used only when you actively record a voice journal entry or voice follow-up. The recording is sent to Google Gemini for the requested transcription and mood analysis, and a copy is retained in private Cloudflare R2 storage so you can play it again. Stored audio remains associated with your entry until you delete that entry or your account.</p>
             <p><strong>Journal Content:</strong> Your journal entries, including transcripts, AI-generated summaries, mood/emotion data, sentiment scores, tags, and timestamps are stored in our secure database. This content is private and only accessible by your authenticated account.</p>
-            <p><strong>Camera & Photos:</strong> The app requests camera permission for the photo journal feature, which allows you to photograph handwritten diary pages. The camera is activated only when you explicitly choose to take a photo. Images are processed to extract text via AI and are stored securely. Camera access can be revoked at any time through your device settings.</p>
+            <p><strong>Camera, Photo Library & Uploaded Photos:</strong> You may choose a photo from your library or take one with the camera to attach to an entry, use as your profile photo, or submit through Photo Journal to read a handwritten diary page. Entry photos and profile photos are resized and compressed on your device, with EXIF/GPS metadata removed, before being stored in private Cloudflare R2 storage. Regular entry attachments and profile photos are not sent to Gemini. Only a photo you explicitly submit through Photo Journal is sent to Gemini for the requested handwriting and mood analysis. Camera and photo-library access can be revoked in your device settings.</p>
             <p><strong>Mood & Emotion Data:</strong> Our AI analyzes your voice tone and words to detect emotions and mood patterns. This includes emotion scores, sentiment analysis, and mood classifications. This data is stored with your journal entries to provide mood tracking and insights.</p>
-            <p><strong>Device & Technical Information:</strong> We collect basic device information including device type, operating system version, timezone, and app version for functionality and debugging purposes.</p>
+            <p><strong>Physical Activity & Step Counts:</strong> If you enable the step-count habit, the app reads your daily step count through Android physical-activity sensors or Apple Motion &amp; Fitness. The daily value is stored with your private habit progress so it can sync across sessions and appear in your insights. AI Diary does not collect precise location from step tracking.</p>
+            <p><strong>Device & Technical Information:</strong> We collect basic device information including device type, operating system version, timezone, and app version for functionality and debugging. If you enable push notifications, we also store a Firebase registration token linked to your account so notifications can reach that app installation.</p>
             <p><strong>Diagnostics:</strong> We collect minimal crash and error reports (via Sentry) to keep the app stable and fix bugs. We do not use third-party product-analytics or behavioral-tracking SDKs, and we do not profile how you use the app.</p>
           </Section>
 
@@ -56,8 +57,11 @@ export default function PrivacyPage() {
             <ul style={{ paddingLeft: 20, listStyle: "disc" }}>
               <li>To provide voice-to-text transcription of your journal entries</li>
               <li>To analyze mood and emotions from your voice recordings and text</li>
+              <li>To privately store and display photos you attach to entries or use as a profile photo</li>
+              <li>To transcribe a handwritten page when you explicitly use Photo Journal</li>
               <li>To generate AI summaries, tags, and insights about your emotional patterns</li>
               <li>To maintain your journaling streak and provide personalized features</li>
+              <li>To show and sync step-count habit progress when you enable that feature</li>
               <li>To authenticate your account and keep your data secure</li>
               <li>To send optional local notifications (journal reminders, streak alerts)</li>
               <li>To create consolidated day journals from your daily entries</li>
@@ -70,15 +74,17 @@ export default function PrivacyPage() {
             <p>The app requests the following device permissions:</p>
             <ul style={{ paddingLeft: 20, listStyle: "disc" }}>
               <li><strong>Microphone (RECORD_AUDIO):</strong> Required for voice journal recordings. Used only when you actively record an entry.</li>
-              <li><strong>Camera (CAMERA):</strong> Optional, for photographing handwritten diary pages. Used only when you explicitly open the camera.</li>
+              <li><strong>Camera (CAMERA):</strong> Optional, for taking an entry photo, profile photo, or handwritten-page photo. Used only when you explicitly open the camera.</li>
+              <li><strong>Photo Library:</strong> Optional, for choosing a photo to attach to an entry or use as your profile photo. On supported Android versions this uses the system photo picker without broad library access.</li>
               <li><strong>Internet (INTERNET):</strong> Required for syncing data, AI processing, and authentication.</li>
               <li><strong>Notifications (POST_NOTIFICATIONS):</strong> Optional, for journal reminders and streak alerts. Can be disabled in settings.</li>
+              <li><strong>Physical Activity / Motion &amp; Fitness:</strong> Optional, for reading daily step counts only when you enable the step-count habit. This does not grant precise-location access.</li>
               <li><strong>Biometric (USE_BIOMETRIC/USE_FINGERPRINT):</strong> Optional, for PIN lock and biometric app lock.</li>
-              <li><strong>Storage (READ/WRITE_EXTERNAL_STORAGE):</strong> For saving and accessing audio recordings.</li>
+              <li><strong>Files:</strong> Optional. When you choose &ldquo;Save to device&rdquo; for an entry photo, the system file picker lets you choose the destination. AI Diary does not request broad storage access.</li>
               <li><strong>Alarm (SCHEDULE_EXACT_ALARM):</strong> For scheduling notification reminders.</li>
-              <li><strong>Advertising ID (AD_ID):</strong> Used by Google AdMob to serve non-personalized ads to free-tier users. We do not use it to track you across apps or build an advertising profile.</li>
+              <li><strong>Advertising ID (Android only):</strong> Google AdMob may use it for non-personalized ad delivery, frequency capping, and fraud prevention for free-tier users. AI Diary does not use it to build an advertising profile. Ads are not initialized in the iOS app.</li>
             </ul>
-            <p>All permissions are requested at the time of use, not at installation. You can revoke any permission at any time through your device settings.</p>
+            <p>User-facing runtime permissions are requested when the related feature needs them. Technical permissions such as internet access do not show a runtime prompt. You can revoke optional camera, photo-library, microphone, notification, or biometric access through your device settings.</p>
           </Section>
 
           <Section title="4. Data Storage & Security">
@@ -86,7 +92,8 @@ export default function PrivacyPage() {
             <ul style={{ paddingLeft: 20, listStyle: "disc" }}>
               <li>All data is encrypted in transit using TLS/SSL encryption</li>
               <li>Authentication is handled by Supabase with Row Level Security (RLS), ensuring users can only access their own data</li>
-              <li>Audio files are stored in Cloudflare R2 with time-limited signed URLs for access</li>
+              <li>Audio and photo files are stored in a private Cloudflare R2 bucket and served only through owner-authorized, time-limited signed URLs</li>
+              <li>Uploaded entry photos are resized/compressed and stripped of EXIF/GPS metadata before storage; the server rejects image uploads that retain EXIF metadata</li>
               <li>Database access is protected by authentication tokens and RLS policies</li>
               <li>The app supports PIN lock and biometric authentication for additional on-device privacy</li>
               <li>Passwords and PINs are stored using secure hashing (never in plain text)</li>
@@ -95,22 +102,23 @@ export default function PrivacyPage() {
           </Section>
 
           <Section title="5. AI Processing & Data Transfer">
-            <p>We use Google Gemini AI to process your voice recordings and generate mood analysis. When you create a journal entry:</p>
+            <p>We use Google Gemini AI to process content only when an AI-powered feature requires it. When you create a voice entry:</p>
             <ul style={{ paddingLeft: 20, listStyle: "disc" }}>
               <li>Your audio recording is sent to Google Gemini AI for transcription and emotion analysis</li>
               <li>The AI generates a transcript, mood classification, sentiment score, summary, and tags</li>
-              <li>This processing happens on secure servers and the data is not retained by the AI service beyond the processing request</li>
+              <li>Google processes the recording for that request; AI Diary separately retains the private R2 copy used for in-app playback until you delete it</li>
+              <li>If you explicitly use Photo Journal, that selected handwritten-page photo is sent to Gemini for OCR and mood analysis. Ordinary entry attachments and profile photos are not sent to Gemini</li>
             </ul>
-            <p>We do not use your personal data to train AI models. The AI processing is used solely to provide you with mood detection, summaries, and journal insights. Your data may be transferred to and processed in countries outside your country of residence where our service providers operate.</p>
+            <p>AI Diary does not train its own models on your content. Google processes requests under the applicable Gemini API terms and project settings. Those terms may include limited retention for safety and abuse prevention and, when an unpaid Gemini service is used, use of prompts and responses to improve Google products. AI processing is used to provide mood detection, summaries, and journal insights. Your data may be transferred to and processed in countries outside your country of residence where our service providers operate.</p>
           </Section>
 
           <Section title="6. Data Sharing & Third Parties">
             <p><strong>We do not sell, trade, rent, or share your personal data with third parties for their marketing purposes.</strong></p>
-            <p>Your journal entries, recordings, and mood data are strictly private. We only share data with the following service providers who are necessary for app functionality:</p>
+            <p>Your journal entries, recordings, attached photos, and mood data are not public and are not available to other users. We disclose data only to service providers needed to operate the requested features:</p>
             <ul style={{ paddingLeft: 20, listStyle: "disc" }}>
               <li><strong>Supabase (supabase.co):</strong> Authentication, database hosting, and user management</li>
               <li><strong>Cloudflare R2 (cloudflare.com):</strong> Secure audio and image file storage</li>
-              <li><strong>Google Gemini AI (google.com):</strong> Voice transcription, emotion analysis, and mood detection</li>
+              <li><strong>Google Gemini AI (google.com):</strong> Voice transcription, emotion analysis, summaries, and handwritten-page processing when Photo Journal is used</li>
               <li><strong>Railway (railway.app):</strong> Backend API hosting</li>
               <li><strong>Firebase Cloud Messaging (google.com):</strong> Push notification delivery</li>
               <li><strong>RevenueCat (revenuecat.com):</strong> Subscription management</li>
@@ -124,11 +132,13 @@ export default function PrivacyPage() {
           <Section title="7. Data Retention & Deletion">
             <p>Your data is retained as long as you maintain an active account. You have full control over your data:</p>
             <ul style={{ paddingLeft: 20, listStyle: "disc" }}>
-              <li><strong>Delete individual entries:</strong> Swipe or long-press any journal entry to delete it permanently</li>
-              <li><strong>Delete your entire account:</strong> Go to Settings &gt; Delete Account to permanently remove all your data including journal entries, recordings, mood data, and personal information</li>
+              <li><strong>Delete an attached photo:</strong> Open the entry photo viewer and choose delete to remove that photo and its stored thumbnail</li>
+              <li><strong>Delete individual entries:</strong> Swipe or long-press an entry to remove its journal content, stored voice recording, attached photos, and derived analysis</li>
+              <li><strong>Delete your entire account:</strong> Go to Settings &gt; Delete Account to permanently remove your profile, avatar, journal entries, recordings, attached photos, mood data, and personal information</li>
+              <li><strong>Habit and step progress:</strong> Account deletion also removes stored habit logs, including any step-count values</li>
               <li><strong>Request data deletion:</strong> Contact us at mubarisfly@gmail.com and we will delete all your data within 30 days</li>
             </ul>
-            <p>When data is deleted, it is permanently removed from our active systems. Backups may retain deleted data for up to 30 days before being purged.</p>
+            <p>Deletion removes the data and your ability to access it from the live account immediately, and requests deletion of associated stored files at the same time. Backups may retain deleted data for up to 30 days before being purged.</p>
           </Section>
 
           <Section title="8. Your Rights (GDPR & Global Privacy Rights)">
@@ -147,13 +157,14 @@ export default function PrivacyPage() {
           </Section>
 
           <Section title="9. Notifications & Communications">
-            <p>With your permission, the app may send local notifications for:</p>
+            <p>With your permission, the app may send local notifications and Firebase Cloud Messaging push notifications for:</p>
             <ul style={{ paddingLeft: 20, listStyle: "disc" }}>
               <li>Journal reminders (customizable time)</li>
               <li>Streak alerts (when your streak is at risk)</li>
               <li>Inactivity reminders (after extended periods without journaling)</li>
+              <li>Follow-up reflections and replies to support requests</li>
             </ul>
-            <p>All notifications are local (generated on your device, not from our servers). You can disable notifications at any time through your device settings or the app&apos;s settings page. We do not send marketing emails or push notifications.</p>
+            <p>You can turn notification categories off in AI Diary or disable notifications in your device settings. Notification delivery uses a Firebase registration token; journal content is not used for third-party advertising.</p>
           </Section>
 
           <Section title="10. Children&apos;s Privacy">
@@ -161,7 +172,7 @@ export default function PrivacyPage() {
           </Section>
 
           <Section title="11. Advertising">
-            <p>The free tier of AI Diary displays ads through Google AdMob. Pro and trial users see no ads. We serve <strong>non-personalized ads only</strong>:</p>
+            <p>On Android, the free tier may display ads through Google AdMob. Pro and trial users see no ads, and ads are not initialized in the iOS app. Android ads are <strong>non-personalized</strong>:</p>
             <ul style={{ paddingLeft: 20, listStyle: "disc" }}>
               <li>We do not use your Advertising ID to track you across apps or build an advertising profile</li>
               <li>Ads are contextual, not based on your behavior or personal data — your journal content is never used for advertising</li>
