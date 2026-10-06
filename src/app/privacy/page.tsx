@@ -29,7 +29,7 @@ export default function PrivacyPage() {
             fontFamily: "var(--font-serif)", fontSize: 36, color: "white", marginBottom: 8,
           }}>Privacy Policy</h1>
           <p style={{ fontSize: 14, color: "rgba(255,255,255,0.45)" }}>
-            Effective and last updated: July 23, 2026
+            Effective and last updated: October 6, 2026
           </p>
         </div>
       </div>
@@ -126,6 +126,7 @@ export default function PrivacyPage() {
               <li><strong>RevenueCat, Google Play, and Apple:</strong> Subscription management and purchase restoration</li>
               <li><strong>Resend (resend.com):</strong> Transactional support emails</li>
               <li><strong>Sentry (sentry.io):</strong> Crash, error, and sampled performance reporting</li>
+              <li><strong>Google Fonts (google.com):</strong> The app downloads its typefaces, including Write-mode handwriting styles, the first time each is shown and then caches them on the device. Google receives your IP address and standard request data, never your journal content.</li>
               <li><strong>Telegram (telegram.org):</strong> Private operational alerts containing an error category and shortened user ID</li>
               <li><strong>Google AdMob (google.com):</strong> Non-personalized advertising for free-tier users only</li>
             </ul>
