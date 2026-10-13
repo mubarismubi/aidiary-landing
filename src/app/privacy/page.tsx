@@ -29,7 +29,7 @@ export default function PrivacyPage() {
             fontFamily: "var(--font-serif)", fontSize: 36, color: "white", marginBottom: 8,
           }}>Privacy Policy</h1>
           <p style={{ fontSize: 14, color: "rgba(255,255,255,0.45)" }}>
-            Effective and last updated: October 6, 2026
+            Effective and last updated: October 13, 2026
           </p>
         </div>
       </div>
@@ -104,14 +104,21 @@ export default function PrivacyPage() {
           </Section>
 
           <Section title="5. AI Processing & Data Transfer">
-            <p>We use Google Gemini AI only when an AI-powered feature requires it, including transcription, mood analysis, summaries, memories, coaching, recaps, semantic search, and diary chat. Depending on the feature, we send the relevant audio, journal text, derived journal context, or question you submit.</p>
+            <p><strong>Who receives your data:</strong> AI Diary&apos;s AI features are powered by <strong>Google Gemini</strong>, a third-party AI service provided by Google LLC through the Gemini API. Your content is sent from our servers (Supabase) to Google over an encrypted connection, only when you use a feature that needs it. No other AI provider receives your content.</p>
+            <p><strong>What data is sent to Google Gemini, and why:</strong></p>
             <ul style={{ paddingLeft: 20, listStyle: "disc" }}>
-              <li>Your audio recording is sent to Google Gemini AI for transcription and emotion analysis</li>
-              <li>The AI generates a transcript, mood classification, sentiment score, summary, and tags</li>
-              <li>Google processes the recording for that request; AI Diary separately retains the R2 copy used for in-app playback until you delete it</li>
-              <li>If you explicitly use Photo Journal, that selected handwritten-page photo is sent to Gemini for OCR and mood analysis. Current builds first resize/compress the analysis copy and remove EXIF/GPS metadata. Ordinary entry attachments and profile photos are not sent to Gemini</li>
+              <li><strong>Voice recordings</strong> of journal entries and voice follow-ups: to write out what you said (transcription) and to detect mood and emotion</li>
+              <li><strong>Typed entries</strong> (Write mode) and <strong>transcripts</strong>: to create summaries, titles, tags, mood and sentiment scores</li>
+              <li><strong>Your answers to follow-up questions</strong>: to write a short reply to your answer</li>
+              <li><strong>Recent journal text and saved memories</strong>: to write the optional coach reflection, weekly and monthly recaps, and answers in diary chat, and to create search embeddings so you can find past entries</li>
+              <li><strong>Questions you type in diary chat</strong>: to answer them from your own journal</li>
+              <li><strong>A handwritten-page photo you choose in Photo Journal</strong>: to read the handwriting and detect mood. Current builds resize/compress this copy and remove EXIF/GPS metadata first. Ordinary entry attachments and profile photos are never sent to Gemini</li>
+              <li><strong>The same entry text, for a safety check</strong>: to recognise when an entry may describe a risk of harm, so the app can show a support message instead of an AI reflection</li>
+              <li><strong>Notification wording</strong>: your first name, your language, the text of a scheduled reminder or follow-up question, and one of your goals or habit names, so a notification can be worded in a friendly voice</li>
             </ul>
-            <p>AI Diary does not train its own models on your content. Google&apos;s handling depends on the Gemini service and project settings used for the request. Under Google&apos;s published terms, paid services do not use prompts or responses to improve Google products, although limited safety and abuse-prevention logging may apply; unpaid services may use prompts and responses for product improvement and may involve human review. Your data may be transferred to and processed in countries where our service providers operate.</p>
+            <p>Your email address, account identifiers, device information and payment details are not sent to Google Gemini. Google returns the transcript and analysis to our servers, where they are stored with your entry; AI Diary separately keeps your audio in Cloudflare R2 for in-app playback until you delete it.</p>
+            <p><strong>How the provider protects your data:</strong> We use Google&apos;s paid Gemini API. Under Google&apos;s Gemini API terms for paid services, Google does not use your prompts or responses to train or improve its models or products; limited logging may be kept for a short period only to detect abuse and meet legal obligations. Google processes the data as our service provider under its data processing terms, which require security and confidentiality protections at least equal to those described in this policy. AI Diary does not train any AI models on your content. Your data may be transferred to and processed in countries where Google and our other service providers operate.</p>
+            <p><strong>Your choice:</strong> AI processing happens only when you record, write, answer, chat or submit a photo. If you do not want your content processed by Google Gemini, do not use these features; you can delete any entry, or your whole account and all its data, at any time (see section 7).</p>
           </Section>
 
           <Section title="6. Data Sharing & Third Parties">
@@ -120,7 +127,7 @@ export default function PrivacyPage() {
             <ul style={{ paddingLeft: 20, listStyle: "disc" }}>
               <li><strong>Supabase (supabase.co):</strong> Authentication, database hosting, and user management</li>
               <li><strong>Cloudflare R2 (cloudflare.com):</strong> Audio and image file storage</li>
-              <li><strong>Google Gemini AI (google.com):</strong> Voice transcription, emotion analysis, summaries, and handwritten-page processing when Photo Journal is used</li>
+              <li><strong>Google Gemini AI (google.com):</strong> Third-party AI service for transcription, mood and emotion analysis, summaries, follow-up replies, coach reflections, recaps, diary chat, search embeddings, safety checks, and handwritten-page processing when Photo Journal is used (see section 5 for exactly what is sent)</li>
               <li><strong>Google and Apple:</strong> Optional account sign-in</li>
               <li><strong>Firebase Cloud Messaging (google.com):</strong> Push notification delivery</li>
               <li><strong>RevenueCat, Google Play, and Apple:</strong> Subscription management and purchase restoration</li>
